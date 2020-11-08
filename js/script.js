@@ -24,10 +24,10 @@ let personalMovieDB = {
 };
 
 start();
-rememberMyFilms();
-detectPersonalLevel();
+// rememberMyFilms();
+// detectPersonalLevel();
 writeYourGenres();
-showMyDB();
+showMyDB(personalMovieDB.privat);
 
 
 function start() {
@@ -65,15 +65,14 @@ function detectPersonalLevel() {
   }
 }
 
-function showMyDB() {
-  if (personalMovieDB.privat == false) {
+function showMyDB(hidden) {
+  if (!hidden) {
     console.log('personalMovieDB:', personalMovieDB);
   }
 }
 
 function writeYourGenres() {
-  for (let i = 0; i < 3; i++) {
-    const c = prompt(`Ваш любимый жанр под номером ${i+1}`);
-    personalMovieDB.genres[i] = c;
+  for (let i = 1; i <= 3; i++) {
+    personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
   }
 }
